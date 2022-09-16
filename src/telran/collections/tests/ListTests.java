@@ -51,7 +51,6 @@ class ListTests {
 //		stack.add(1 ,10);
 //		stack.remove(1);
 		Queue<Integer> queue = new LinkedList<>(list);
-		
 		assertEquals(1,queue.remove());
 		Integer[] expected = {2,3,4,5,6,7,8,9,10};
 		assertArrayEquals(expected, queue.toArray(new Integer[0]));

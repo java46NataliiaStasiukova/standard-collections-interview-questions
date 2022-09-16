@@ -1,27 +1,52 @@
 package telran.util;
 
+import java.util.NoSuchElementException;
+
 public class StackInt {
-	//TODO fields
-	//complexity of all following methods is O[1]
-	//+ to write tests
+	private static final int defaultCapacity = 16;
+	private int array[];
+	private int top;
+	private int max;
+	private int arrayMax[];
+	private int index;
+	
+	public StackInt(){
+		array = new int[defaultCapacity];
+		top = -1;
+		arrayMax = new int[defaultCapacity];
+		index = -1;
+	}	 
 	public int pop() {
-		//TODO
-		//removes last number and returns removed number
-		//throws exception NoSuchElementException for empty stack
-		return 0;
+		if(isEmpty()) {
+			throw new NoSuchElementException();
+		}
+		max = arrayMax[index--];
+		int res = array[top--];
+		return res;
 	}
 	public void push(int number) {
-		//TODO
-		//adds number at end of a stack
+		if(isEmpty()) {
+			max = number;
+			arrayMax[++index] = number;
+		}
+		else if(max >= number) {
+			arrayMax[++index] = max;
+		}
+		else {
+			max = number;
+			arrayMax[++index] = number;
+		}	
+		array[++top] = number;
 	}
 	public boolean isEmpty() {
-		//TODO
-		//returns true if the stack is empty
-		return false;
+		
+		return top == -1;
 	}
 	public int getMaxNumber() {
-		//TODO
-		//returns maximal number existing in a stack
-		return 0;
+		if(isEmpty()) {
+			throw new NoSuchElementException();
+		}
+		return arrayMax[index];
 	}
+
 }
