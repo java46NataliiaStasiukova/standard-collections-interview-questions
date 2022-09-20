@@ -3,7 +3,7 @@ package telran.util;
 import java.util.NoSuchElementException;
 
 public class StackInt {
-	private static final int defaultCapacity = 16;
+	private static final int defaultCapacity = 1000000;
 	private int array[];
 	private int top;
 	private int max;
