@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import java.util.*;
 class ListTests {
 	Integer[] numbers = {1,2,3,4,5,6,7,8,9,10};
@@ -14,19 +15,13 @@ class ListTests {
 		listMutable = new ArrayList<>(list);
 	}
 	@Test
-	void listImmutableMutableTest() {
-		
-		
+	void listImmutableMutableTest() {	
 		assertThrows(UnsupportedOperationException.class, () -> list.remove(0));
 		Integer[] expected = {2,3,4,5,6,7,8,9,10};
 		
 		assertEquals(1, listMutable.remove(0));
-		assertArrayEquals(expected, listMutable.toArray(new Integer[0]));
-		
-	
-		
-	}
-	
+		assertArrayEquals(expected, listMutable.toArray(new Integer[0]));	
+	}	
 	@Test
 	void listViewTest() {
 		List<Integer> subList = listMutable.subList(2, 10);
@@ -38,9 +33,7 @@ class ListTests {
 		subList.add(4, 7);
 		assertArrayEquals(numbers, listMutable.toArray(new Integer[0]));
 		subList.clear();
-		assertEquals(2, listMutable.size());
-		
-		
+		assertEquals(2, listMutable.size());	
 	}
 	@Test
 	void queueTest() {
@@ -61,10 +54,7 @@ class ListTests {
 		assertEquals(true,queue.remove(7));
 		assertFalse(queue.contains(7));
 		listMutable.remove(7);
-		assertTrue(listMutable.contains(7));
-		
-		
-		
+		assertTrue(listMutable.contains(7));		
 	}
 	@Test
 	void removeRepeatedTest() {
@@ -73,10 +63,11 @@ class ListTests {
 		assertArrayEquals(numbers, listMutable.toArray(Integer[]::new));
 	}
 	private void removeRepeated(List<Integer> list) {
-		// TODO Auto-generated method stub
 		//most optimal way for removing the repeated elements
 		//O[N]
-		
+		HashSet<Integer> hashSet = new HashSet<>(list);
+		list.clear();
+		hashSet.forEach(n -> list.add(n));	
 	}
 
 }
