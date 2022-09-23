@@ -65,7 +65,7 @@ class ListTests {
 	private void removeRepeated(List<Integer> list) {
 		//most optimal way for removing the repeated elements
 		//O[N]
-		HashSet<Integer> hashSet = new HashSet<>(list);
+		LinkedHashSet<Integer> hashSet = new LinkedHashSet<>(list);
 		list.clear();
 		hashSet.forEach(n -> list.add(n));	
 	}

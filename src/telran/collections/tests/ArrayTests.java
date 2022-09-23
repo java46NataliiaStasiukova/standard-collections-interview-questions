@@ -48,9 +48,6 @@ class ArrayTests {
 				repeatedNumsSet.add(n);
 			}
 		});
-		if(array.length != hashSet.size()) {
-			
-		}	
 		for(int num: hashSet) {
 			if(hashSet.contains(halfSum - num) && halfSum - num != num || repeatedNumsSet.contains(halfSum - num)) {
 				return true;
