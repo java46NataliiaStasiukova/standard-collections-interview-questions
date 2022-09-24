@@ -3,11 +3,22 @@ package telran.collections.tests;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-
+import static telran.util.Anagram.isAnagram;
 class AnagramTests {
 
 	@Test
 	void testIsAnagram() {
+		assertTrue(isAnagram("Anagram", "anagram"));
+		assertTrue(isAnagram("anagram", "graaamn"));
+		assertTrue(isAnagram("yellow", "wolely"));
+		assertTrue(isAnagram("yellow", "lowlye"));
+		
+		assertFalse(isAnagram("Anagram", "Abagra1"));
+		assertFalse(isAnagram("", "Hello"));
+		assertFalse(isAnagram("Hello", "ello"));
+		assertFalse(isAnagram("hello", ""));
+		assertFalse(isAnagram("", ""));
+		
 		
 	}
 

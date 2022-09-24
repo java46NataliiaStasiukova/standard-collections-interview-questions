@@ -2,28 +2,53 @@ package telran.collections.tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class MyArrayTests {
+import telran.util.MyArray;
 
+class MyArrayTests {
+	MyArray<String> myArray;
+	@BeforeEach
+	void setUp() {
+		myArray = new MyArray<>(6);
+	}
 	@Test
 	void testMyArray() {
-		//TODO
+		MyArray<Integer> myTest = new MyArray<>(12);
+		assertNull(myTest.get(12));
+		myTest.setAll(120);
+		assertEquals(120, myTest.get(12));
+		assertNull(myTest.get(13));
+		
 	}
 
 	@Test
 	void testSetAll() {
-		//TODO
+		myArray.setAll("Hello");
+		assertEquals("Hello", myArray.get(3));
+		assertEquals("Hello", myArray.get(0));
+		assertEquals("Hello", myArray.get(6));	
 	}
 
 	@Test
 	void testGet() {
-		//TODO
+		assertNull(myArray.get(5));
+		assertNull(myArray.get(-2));
+		assertNull(myArray.get(7));
+		myArray.set(4, "Test");
+		assertEquals("Test", myArray.get(4));
+		myArray.setAll("Telran");
+		assertEquals("Telran", myArray.get(4));
+		
+		
 	}
 
 	@Test
 	void testSet() {
-		//TODO
+		myArray.set(2, "Telran");
+		assertEquals("Telran", myArray.get(2));
+		assertThrows(IndexOutOfBoundsException.class, ()-> myArray.set(-2, "Hello"));
 	}
 
 }

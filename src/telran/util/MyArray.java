@@ -1,21 +1,29 @@
 package telran.util;
+
+import java.util.HashMap;
+
 /**
- * All methods of the class should have complaxity O[N]
+ * All methods of the class should have complaxity O[1]
  * @author nataliiastasiukova
  *
  * @param <T>
  */
 public class MyArray<T> {
-//TODO fields
+	int size;
+	T defaultValue;
+	HashMap<Integer, T> hashMap;
 	public MyArray(int size) {
-		//TODO
+		this.size = size;
+		hashMap = new HashMap<>();
+		defaultValue = null;
 	}
 	/**
 	 * sets all array elements with a given value
 	 * @param value
 	 */
 	public void setAll(T value) {
-		//TODO
+		hashMap = new HashMap<>();
+		defaultValue = value;
 	}
 	/**
 	 * 
@@ -23,8 +31,15 @@ public class MyArray<T> {
 	 * @return value at given index or null if index wrong
 	 */
 	public T get(int index) {
-		//TODO
-		return null;
+		T res = defaultValue;;
+		if(index < 0 || index > size) {
+			return null;
+		}
+		if(hashMap.get(index) != null) {
+			
+			res =  hashMap.get(index);
+		}
+		return res;
 	}
 	/**
 	 * sets a given value at a given index
@@ -33,6 +48,10 @@ public class MyArray<T> {
 	 * @param value
 	 */
 	public void set(int index, T value) {
-		//TODO
+		if(index < 0 || index > size) {
+			throw new IndexOutOfBoundsException();
+		}
+		hashMap.put(index, value);
+		
 	}
 }

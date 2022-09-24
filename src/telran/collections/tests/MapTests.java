@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import java.util.*;
 import java.util.Map.Entry;
+import java.util.stream.Stream;
 class MapTests {
 
 	@Test
@@ -49,6 +50,9 @@ class MapTests {
 			Integer count = res.getOrDefault(str, 0);
 			res.put(str, count + 1);
 		}
+		Stream.of(res).forEach(n -> System.out.println(n));
+			System.out.println(res.getClass());
+		
 		return res;
 	}
 
