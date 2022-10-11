@@ -8,7 +8,6 @@ public interface ConnectionsPool {
  * in the case the Connection Pool is full the last connection will be removed
  */
 	boolean addConnection(Connection connection);
-	
 	/**
 	 * 
 	 * @param id

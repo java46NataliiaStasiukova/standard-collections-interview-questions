@@ -18,5 +18,6 @@ public class Connection {
 	public int getPort() {
 		return port;
 	}
+
 	
 }
