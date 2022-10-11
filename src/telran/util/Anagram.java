@@ -12,27 +12,27 @@ public class Anagram {
 	 * Example: yellow {wolely, lowlye, yellow}, wrong anagrams{yello, yelllw} 
 	 */
 public static boolean isAnagram(String word, String anagram) {
-	boolean res = true;
-	if(word.length() != anagram.length() || word.length() == 0) {
-		return false;
-	}
-	HashMap<Character, Integer> hashMap = new HashMap<>();
-	char[] word1 = word.toLowerCase().toCharArray();
-	char[] word2 = anagram.toLowerCase().toCharArray();
-	for(int i = 0; i < word.length(); i++) {
-		Integer count = hashMap.getOrDefault(word1[i], 0);
-		hashMap.put(word1[i], count + 1);
-		count = hashMap.getOrDefault(word2[i], 0);
-		hashMap.put(word2[i], count - 1);
-	}
-	for(int n: hashMap.values()) {
-		if(n != 0) {
-			res = false;
+
+	boolean res = false;
+	if(word.length() == anagram.length() || word.length() == 0) {
+		res = true;
+	
+		HashMap<Character, Integer> hashMap = new HashMap<>();
+		char[] word1 = word.toLowerCase().toCharArray();
+		char[] word2 = anagram.toLowerCase().toCharArray();	
+		for(char c: word1) {
+			hashMap.put(c, hashMap.compute(c, (k, v) -> (v == null) ? 1 : v+1));
+		}
+		for(char c: word2) {
+			hashMap.merge(c, 1, (oldV, newV) -> oldV - newV);
+		}
+		for(int n: hashMap.values()) {
+			if(n != 0) {
+				res = false;
+			}
 		}
 	}
 	return res;
 }
 
-
 }
-

@@ -1,7 +1,5 @@
 package telran.collections.tests;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
 import java.util.*;
 import java.util.Map.Entry;
@@ -33,7 +31,7 @@ class MapTests {
 	}
 
 	private List<Entry<String, Integer>> getSortedList(Map<String, Integer> mapOccurrences) {
-		List<Entry<String, Integer>> res = new ArrayList(mapOccurrences.entrySet());
+		List<Entry<String, Integer>> res = new ArrayList<Entry<String, Integer>>(mapOccurrences.entrySet());
 		res.sort((e1, e2) -> {
 			int cmpRes = Integer.compare(e2.getValue(), e1.getValue());
 			if(cmpRes == 0) {
