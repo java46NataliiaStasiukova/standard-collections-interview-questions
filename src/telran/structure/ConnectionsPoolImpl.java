@@ -23,6 +23,7 @@ public class ConnectionsPoolImpl implements ConnectionsPool{
 			}
 			head = nodeConnection;
 			
+			
 		}
 		void removeTail() {
 			tail = tail.prev;
