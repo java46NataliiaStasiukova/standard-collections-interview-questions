@@ -82,7 +82,7 @@ class ArrayTests {
 		int[] index = {-1, -1};
 		int count = 0;
 		for(int i = 1; i < array.length; i++) {
-			if(test[i].compareTo(test[i - 1]) == -1) {
+			if(test[i].compareTo(test[i - 1]) < 0) {
 				if(count == 0) {
 					index[0] = i - 1;
 					index[1] = i;
@@ -99,7 +99,7 @@ class ArrayTests {
 			test[index[0]] = array[index[1]];
 			test[index[1]] = array[index[0]];
 		for(int i = 1; i < array.length; i++) {
-			if(test[i].compareTo(test[i -1]) == -1) {
+			if(test[i].compareTo(test[i -1]) < 0) {
 				return false;
 			}
 		}
@@ -113,11 +113,13 @@ class ArrayTests {
 		Integer arTrue3[] = {10, 2, 3, 4, 6, 1};
 		Integer arTrue4[] = {3, 2, 3, 4, 6, 10};
 		Integer arTrue5[] = {1, 2, 3, 4, 6, 10, 7};
+		String arTrue6[] = {"lmn", "ab", "bc", "cd", "a"};
 		assertTrue(isOneSwapForSorted(arTrue1));
 		assertTrue(isOneSwapForSorted(arTrue2));
 		assertTrue(isOneSwapForSorted(arTrue3));
 		assertTrue(isOneSwapForSorted(arTrue4));
 		assertTrue(isOneSwapForSorted(arTrue5));
+		assertTrue(isOneSwapForSorted(arTrue6));
 		
 		Integer arFalse1[] = {1, 10, 2, 3, 6, 4};
 		Integer arFalse2[] = {1, 2, 4, 2, 10, 6};
